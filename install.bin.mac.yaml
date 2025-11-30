@@ -1,0 +1,16 @@
+# Assume that your system has Homebrew installed,
+# and that the network environment has no restrictions.
+- brew:
+  - bat
+  - btop
+  - dust
+  - eza
+  - fastfetch
+  - fd
+  - fzf
+  - zellij
+  - zoxide
+  - zsh
+
+- cask:
+  - font-hack-nerd-font

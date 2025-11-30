@@ -1,0 +1,32 @@
+[submodule "dotbot"]
+    path = dotbot
+    url = https://github.com/anishathalye/dotbot.git
+    ignore = dirty
+[submodule "zinit/zinit.git"]
+    path = zinit/zinit.git
+    url = https://github.com/zdharma-continuum/zinit.git
+    ignore = dirty
+[submodule "zinit/plugins/Aloxaf---fzf-tab"]
+    path = zinit/plugins/Aloxaf---fzf-tab
+    url = https://github.com/Aloxaf/fzf-tab.git
+    ignore = dirty
+[submodule "zinit/plugins/romkatv---powerlevel10k"]
+    path = zinit/plugins/romkatv---powerlevel10k
+    url = https://github.com/romkatv/powerlevel10k.git
+    ignore = dirty
+[submodule "zinit/plugins/zsh-users---zsh-autosuggestions"]
+    path = zinit/plugins/zsh-users---zsh-autosuggestions
+    url = https://github.com/zsh-users/zsh-autosuggestions.git
+    ignore = dirty
+[submodule "zinit/plugins/zsh-users---zsh-completions"]
+    path = zinit/plugins/zsh-users---zsh-completions
+    url = https://github.com/zsh-users/zsh-completions.git
+    ignore = dirty
+[submodule "zinit/plugins/zsh-users---zsh-syntax-highlighting"]
+    path = zinit/plugins/zsh-users---zsh-syntax-highlighting
+    url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+    ignore = dirty
+[submodule "dotbot-brew"]
+    path = dotbot-brew
+    url = https://github.com/d12frosted/dotbot-brew.git
+    ignore = dirty

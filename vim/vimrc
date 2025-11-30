@@ -1,0 +1,50 @@
+" === Basic UI ===
+set showmode                      " Display the current mode (INSERT/REPLACE) on the status line
+set showcmd                       " Display pending/incomplete key sequences in the status area
+set ruler                         " Show cursor position (line/column) in the status bar
+set laststatus=2                  " Always show status line
+set wildmenu                      " Enable visual cyclic menu for : command-line completion
+set visualbell                    " Use visual flash instead of audible beep (overridden by t_vb)
+set t_vb=                         " Disable terminal visual bell Together with visualbell
+                                  " → fully silent mode
+set autoread                      " Auto-reload file changed outside Vim
+set nocompatible                  " Use Vim defaults instead of Vi compatibility
+
+" === Indentation & Tabs ===
+set autoindent                    " Inherit indentation from the previous line (basic indent only)
+set tabstop=4                     " Number of spaces that a <Tab> counts for
+set shiftwidth=4                  " Indent width used by >>, <<, and auto-indent
+set softtabstop=4                 " Makes <Tab> insert 4 spaces when soft tabbing
+set expandtab                     " Convert tabs to spaces
+
+" === Search ===
+set showmatch                     " Highlight matching brackets (), {}, []
+set hlsearch                      " Highlight search matches
+set incsearch                     " Show incremental search results as you type
+set ignorecase                    " Case-insensitive search
+set smartcase                     " Case-sensitive search only when pattern contains uppercase
+
+" === Line Numbers & Cursor ===
+set number                        " Show absolute line numbers
+set relativenumber                " Show relative line numbers
+set cursorline                    " Highlight the current cursor line
+
+" === Filetypes & Syntax ===
+filetype plugin indent on         " Enable filetype detection Also loads ftplugin + indent files
+syntax on                         " Enable syntax highlighting
+
+" === Interaction & Behavior ===
+set hidden                        " Allow switching buffers without saving
+set backspace=indent,eol,start    " Make backspace behave normally
+set nostartofline                 " Keep cursor in same column when moving around
+set confirm                       " Prompt when closing unsaved files
+set mouse=a                       " Enable mouse support in all modes
+set notimeout ttimeout ttimeoutlen=200   " Disable mapping timeout but keep 200ms timeout
+                                         " for terminal key sequences
+
+" === Clipboard & Paste ===
+set pastetoggle=<F11>             " Toggle paste mode with F11
+
+" === Key Mappings ===
+map Y y$                          " Make Y behave like D and C (yank to end of line)
+nnoremap <C-L> :nohl<CR><C-L>     " Clear search highlight, then refresh/redraw the screen

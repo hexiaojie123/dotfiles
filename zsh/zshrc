@@ -1,0 +1,40 @@
+ALT_ZSH="$HOME/.local/bin/zsh"
+# string comparision mistake ignored currently
+if [[ "$ZSH_VERSION" < "5.8" && -x "$ALT_ZSH" ]]; then
+    export SHELL="$ALT_ZSH"
+    exec "$ALT_ZSH" -l
+fi
+# zinit >>>>>>>>>>>>>>>>>>>>>>>>>>
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+source "${ZINIT_HOME}/zinit.zsh"
+
+zinit load zsh-users/zsh-completions
+zinit load Aloxaf/fzf-tab
+autoload -Uz compinit && compinit
+zinit load zsh-users/zsh-syntax-highlighting
+zinit load zsh-users/zsh-autosuggestions
+zstyle ':completion:*' rehash true
+
+# P10K >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+zinit load romkatv/powerlevel10k
+P10K_INSTANT_PROMPT="${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+[[ -r "$P10K_INSTANT_PROMPT" ]] && source "$P10K_INSTANT_PROMPT"
+P10K="$XDG_CONFIG_HOME/p10k/p10k.zsh" # p10k
+[[ ! -f "$P10K" ]] || source "$P10K"
+
+# tool >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+eval "$(zoxide init zsh --cmd j)"
+alias ls="eza --icons --group-directories-first"
+alias ll="eza --icons --group-directories-first --total-size --long --header --git --time-style=long-iso"
+alias cat="bat"
+
+# bindkey >>>>>>>>>>>>>>>>>>>>>>>
+bindkey -v
+bindkey -M viins '^[[A' history-search-backward
+bindkey -M viins '^[[B' history-search-forward
+
+# into shell
+fastfetch
+
+# source diff
+source $XDG_CONFIG_HOME/zsh/.zshdiff

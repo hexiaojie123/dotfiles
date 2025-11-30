@@ -1,0 +1,47 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+
+- shell:
+  - echo "Platform is ${PLATFORM}"
+
+- link:
+    ~/.local/bin/bat: binaries/${PLATFORM}/bat/bin/bat #bat
+    ~/.local/bin/btop: binaries/${PLATFORM}/btop/bin/btop #btop
+    ~/.local/bin/dust: binaries/${PLATFORM}/dust/bin/dust #dust
+    ~/.local/bin/eza: binaries/${PLATFORM}/eza/bin/eza #eza
+    ~/.local/bin/fastfetch: binaries/${PLATFORM}/fastfetch/bin/fastfetch #fastfetch
+    ~/.local/bin/fd: binaries/${PLATFORM}/fd/bin/fd #fd
+    ~/.local/bin/fzf: binaries/${PLATFORM}/fzf/bin/fzf #fzf
+    ~/.local/bin/zellij: binaries/${PLATFORM}/zellij/bin/zellij #zellij
+    ~/.local/bin/zoxide: binaries/${PLATFORM}/zoxide/bin/zoxide #zoxid3
+    "$XDG_DATA_HOME/zsh-function/_bat": binaries/${PLATFORM}/bat/share/autocomplete/bat.zsh #bat
+    "$XDG_DATA_HOME/zsh-function/_fastfetch": binaries/${PLATFORM}/fastfetch/share/zsh/site-functions/_fastfetch #fastfetch
+    "$XDG_DATA_HOME/zsh-function/_fd": binaries/${PLATFORM}/fd/share/autocomplete/_fd #fd
+    "$XDG_DATA_HOME/zsh-function/_zoxide": binaries/${PLATFORM}/zoxide/share/completions/_zoxide #zoxide
+
+- shell:
+  - #zsh
+    command: >
+      binaries/${PLATFORM}/zsh/install
+      -f binaries/${PLATFORM}/zsh/zsh-5.8-linux-${PLATFORM}.tar.gz
+      -d $HOME/.local
+      -e no &&
+      ALT_ZSH="$HOME/.local/bin/zsh" &&
+      echo "If your default is bash, please add the below at the end of your .bashrc:
+
+      cat << 'EOF' >> \$HOME/.bashrc
+
+      ALT_ZSH="\$HOME/.local/bin/zsh"
+
+      if [[ -x "\$ALT_ZSH" && \$- == *i* && -z "\$NO_ZSH" ]]; then
+          export SHELL="\$ALT_ZSH"
+          exec "\$ALT_ZSH" -l
+      fi
+
+      EOF
+      "
+    quiet: true
+    stdout: true
