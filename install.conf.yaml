@@ -31,6 +31,7 @@
     "$XDG_CONFIG_HOME/vim/vimrc": vim/vimrc #vim
     "$XDG_CONFIG_HOME/zsh/.zshrc": zsh/zshrc #zsh
     "$XDG_CONFIG_HOME/p10k/p10k.zsh": p10k/p10k.zsh #p10k
+    "$XDG_CONFIG_HOME/wezterm/wezterm.lua": wezterm/wezterm.lua #wezterm
     "$HOME/.zshenv": zsh/zshenv #zsh
 
 - shell:
