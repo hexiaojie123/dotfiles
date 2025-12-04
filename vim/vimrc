@@ -38,7 +38,9 @@ set hidden                        " Allow switching buffers without saving
 set backspace=indent,eol,start    " Make backspace behave normally
 set nostartofline                 " Keep cursor in same column when moving around
 set confirm                       " Prompt when closing unsaved files
-set mouse=a                       " Enable mouse support in all modes
+if has('mouse')
+    set mouse=a                   " Enable mouse support in all modes
+endif
 set notimeout ttimeout ttimeoutlen=200   " Disable mapping timeout but keep 200ms timeout
                                          " for terminal key sequences
 

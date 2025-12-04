@@ -19,20 +19,21 @@
   - "$XDG_CACHE_HOME"
   - "$XDG_DATA_HOME"
   - "$XDG_STATE_HOME"
+  - "$XDG_STATE_HOME/zsh"
 
 - shell:
   - chmod 700 $XDG_CONFIG_HOME
   - chmod 700 $XDG_CACHE_HOME
   - chmod 700 $XDG_DATA_HOME
   - chmod 700 $XDG_STATE_HOME
+  - chmod 700 $XDG_STATE_HOME/zsh
 
 - link:
-    "$XDG_DATA_HOME/zinit": zinit #zinit
-    "$XDG_CONFIG_HOME/vim/vimrc": vim/vimrc #vim
-    "$XDG_CONFIG_HOME/zsh/.zshrc": zsh/zshrc #zsh
-    "$XDG_CONFIG_HOME/p10k/p10k.zsh": p10k/p10k.zsh #p10k
-    "$XDG_CONFIG_HOME/wezterm/wezterm.lua": wezterm/wezterm.lua #wezterm
-    "$HOME/.zshenv": zsh/zshenv #zsh
+    "$XDG_DATA_HOME/zinit": zinit # zinit
+    "$XDG_CONFIG_HOME/vim/vimrc": vim/vimrc # vim
+    "$XDG_CONFIG_HOME/zsh/.zshrc": zsh/zshrc # zsh
+    "$XDG_CONFIG_HOME/p10k/p10k.zsh": p10k/p10k.zsh # p10k
+    "$HOME/.zshenv": zsh/zshenv # zsh
 
 - shell:
   - test -f "$XDG_CONFIG_HOME/zsh/.zshdiff" || touch "$XDG_CONFIG_HOME/zsh/.zshdiff"

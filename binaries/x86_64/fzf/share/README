@@ -1,0 +1,3 @@
+zinit load junegunn/fzf
+
+The above command in zshrc will load fzf completions and keybindings.

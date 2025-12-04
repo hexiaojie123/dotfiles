@@ -9,5 +9,3 @@ export PATH="$HOME/.local/bin:$PATH"
 if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/binutils/bin:$PATH"
 fi
-
-fpath+=($XDG_DATA_HOME/zsh-function/)

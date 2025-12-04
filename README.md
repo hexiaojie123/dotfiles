@@ -48,6 +48,9 @@ Which can easily installed by brew.
 - fzf
     - aarch64: fzf-0.67.0-linux_arm64 from github
     - x86_64: fzf-0.67.0-linux_amd64 from github
+- gitstatus
+    - aarch64: gitstatusd-linux-aarch64 from github
+    - x86_64: gitstatusd-linux-x86_64 from github
 - zellij
     - aarch64: zellij-aarch64-unknown-linux-musl (v0.43.1) from github
     - x86_64: zellij-x86_64-unknown-linux-musl (v0.43.1) from github

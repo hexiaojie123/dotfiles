@@ -8,19 +8,24 @@
   - echo "Platform is ${PLATFORM}"
 
 - link:
-    ~/.local/bin/bat: binaries/${PLATFORM}/bat/bin/bat #bat
-    ~/.local/bin/btop: binaries/${PLATFORM}/btop/bin/btop #btop
-    ~/.local/bin/dust: binaries/${PLATFORM}/dust/bin/dust #dust
-    ~/.local/bin/eza: binaries/${PLATFORM}/eza/bin/eza #eza
-    ~/.local/bin/fastfetch: binaries/${PLATFORM}/fastfetch/bin/fastfetch #fastfetch
-    ~/.local/bin/fd: binaries/${PLATFORM}/fd/bin/fd #fd
-    ~/.local/bin/fzf: binaries/${PLATFORM}/fzf/bin/fzf #fzf
-    ~/.local/bin/zellij: binaries/${PLATFORM}/zellij/bin/zellij #zellij
-    ~/.local/bin/zoxide: binaries/${PLATFORM}/zoxide/bin/zoxide #zoxid3
-    "$XDG_DATA_HOME/zsh-function/_bat": binaries/${PLATFORM}/bat/share/autocomplete/bat.zsh #bat
-    "$XDG_DATA_HOME/zsh-function/_fastfetch": binaries/${PLATFORM}/fastfetch/share/zsh/site-functions/_fastfetch #fastfetch
-    "$XDG_DATA_HOME/zsh-function/_fd": binaries/${PLATFORM}/fd/share/autocomplete/_fd #fd
-    "$XDG_DATA_HOME/zsh-function/_zoxide": binaries/${PLATFORM}/zoxide/share/completions/_zoxide #zoxide
+    ~/.local/bin/bat: binaries/${PLATFORM}/bat/bin/bat # bat
+    ~/.local/bin/btop: binaries/${PLATFORM}/btop/bin/btop # btop
+    ~/.local/bin/dust: binaries/${PLATFORM}/dust/bin/dust # dust
+    ~/.local/bin/eza: binaries/${PLATFORM}/eza/bin/eza # eza
+    ~/.local/bin/fastfetch: binaries/${PLATFORM}/fastfetch/bin/fastfetch # fastfetch
+    ~/.local/bin/fd: binaries/${PLATFORM}/fd/bin/fd # fd
+    ~/.local/bin/fzf: binaries/${PLATFORM}/fzf/bin/fzf # fzf
+    "$XDG_STATE_HOME/bin/gitstatusd-linux-${PLATFORM}": binaries/${PLATFORM}/gitstatus/bin/gitstatusd-linux-${PLATFORM} # gitstatus
+    ~/.local/bin/zellij: binaries/${PLATFORM}/zellij/bin/zellij # zellij
+    ~/.local/bin/zoxide: binaries/${PLATFORM}/zoxide/bin/zoxide # zoxide
+    "$XDG_DATA_HOME/zsh-function/_bat": binaries/${PLATFORM}/bat/share/autocomplete/bat.zsh # bat
+    "$XDG_DATA_HOME/zsh-function/_btop": binaries/${PLATFORM}/btop/share/_btop # btop
+    "$XDG_DATA_HOME/zsh-function/_eza": binaries/${PLATFORM}/eza/share/_eza # eza
+    "$XDG_DATA_HOME/zsh-function/_dust": binaries/${PLATFORM}/dust/share/_dust # dust
+    "$XDG_DATA_HOME/zsh-function/_fastfetch": binaries/${PLATFORM}/fastfetch/share/zsh/site-functions/_fastfetch # fastfetch
+    "$XDG_DATA_HOME/zsh-function/_fd": binaries/${PLATFORM}/fd/share/autocomplete/_fd # fd
+    "$XDG_DATA_HOME/zsh-function/_zellij": binaries/${PLATFORM}/zellij/share/_zellij # zellij
+    "$XDG_DATA_HOME/zsh-function/_zoxide": binaries/${PLATFORM}/zoxide/share/completions/_zoxide # zoxide
 
 - shell:
   - #zsh
