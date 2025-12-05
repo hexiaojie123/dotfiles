@@ -1,0 +1,62 @@
+# fzf; ctrl f; ctrl r; alt t; vim **; cd **; kill **
+source <(fzf --zsh)
+
+bindkey -r '^T'
+bindkey '^F' fzf-file-widget
+export _FD_FLAGS="--hidden --follow --exclude .git"
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix $_FD_FLAGS"
+export FZF_ALT_C_COMMAND="fd --type d --strip-cwd-prefix $_FD_FLAGS"
+_fzf_compgen_path() { fd --type f ${=_FD_FLAGS} . "$1" }
+_fzf_compgen_dir() { fd --type d ${=_FD_FLAGS} . "$1" }
+
+export FZF_DEFAULT_OPTS="
+  --style full
+  --border --padding 1,2
+  --border-label ' command-line fuzzy finder ' --input-label ' Input ' --header-label ' File Type (Press CTRL+/ to toggle preview) '
+  --preview 'fzf-preview.sh {}'
+  --bind 'result:transform-list-label:
+    if [[ -z \$FZF_QUERY ]]; then
+      echo \" \$FZF_MATCH_COUNT items \"
+    else
+      echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"
+    fi
+    '
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
+  --bind 'focus:+transform-header:file --brief {} || echo \"No file selected\"'
+  --bind 'ctrl-r:change-list-label( Reloading the list )+reload(git ls-files || fd --type f --hidden --follow --exclude .git)'
+  --color 'border:#aaaaaa,label:#cccccc'
+  --color 'preview-border:#9999cc,preview-label:#ccccff'
+  --color 'list-border:#669966,list-label:#99cc99'
+  --color 'input-border:#996666,input-label:#ffcccc'
+  --color 'header-border:#6699cc,header-label:#99ccff'
+"
+
+export FZF_ALT_C_OPTS="
+  --preview 'eza --tree --level=2 --icons --color=always {} | head -200' 
+  --border-label ' Directory Search '
+"
+  # --preview-window 'right:50%'
+
+export _FZF_SIMPLE_VIEW="
+  --preview 'echo {}' 
+  --preview-window down:3:hidden:wrap
+  --header-label ''
+  --bind 'focus:transform-header:true'
+"
+
+export FZF_CTRL_R_OPTS="$_FZF_SIMPLE_VIEW --border-label ' Command History '"
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    kill)
+      FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $_FZF_SIMPLE_VIEW --border-label ' Kill Progress '" fzf "$@"
+      ;;
+    *)
+      fzf "$@"
+      ;;
+  esac
+}

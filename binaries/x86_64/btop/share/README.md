@@ -1,3 +1,5 @@
+no _btop
+
 # ![btop++](Img/logo.png)
 
 <a href="https://repology.org/project/btop/versions">

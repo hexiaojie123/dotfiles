@@ -8,10 +8,9 @@ fi
 # zinit >>>>>>>>>>>>>>>>>>>>>>>>>>
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
-fpath+=($XDG_DATA_HOME/zsh-function/) # completion
+fpath+=($XDG_DATA_HOME/zsh/site-functions/) # completion
 zinit load zsh-users/zsh-completions # completion
 autoload -Uz compinit && compinit # completion
-source <(fzf --zsh) # fzf
 zinit load Aloxaf/fzf-tab # fzf
 zinit load zsh-users/zsh-syntax-highlighting # highlight
 zinit load zsh-users/zsh-autosuggestions # suggestion
@@ -28,18 +27,15 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt SHARE_HISTORY
 
-# p10k >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-zinit load romkatv/powerlevel10k
-P10K_INSTANT_PROMPT="${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-[[ -r "$P10K_INSTANT_PROMPT" ]] && source "$P10K_INSTANT_PROMPT"
-P10K="$XDG_CONFIG_HOME/p10k/p10k.zsh"
-[[ ! -f "$P10K" ]] || source "$P10K"
+# env >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export _ZO_ECHO=1
 
 # tool >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-eval "$(zoxide init zsh --cmd j)"
+eval "$(zoxide init zsh --cmd cd)"
 alias ls="eza --icons --group-directories-first"
-alias ll="eza --icons --group-directories-first --total-size --long --header --git --time-style=long-iso"
-alias cat="bat"
+alias ll="eza -l -a --icons --group-directories-first --header --git --time-style=long-iso"
+alias lz="eza -l --icons --group-directories-first --total-size --header --git --time-style=long-iso"
+alias lt="eza --tree --level=2 --icons"
 
 # bindkey >>>>>>>>>>>>>>>>>>>>>>>
 bindkey -v
@@ -53,5 +49,7 @@ typeset -U PATH
 TMOUT=0
 fastfetch
 
-# source diff
-source $XDG_CONFIG_HOME/zsh/.zshdiff
+# source others
+[[ -f "$XDG_CONFIG_HOME/p10k/.p10krc" ]] && source "$XDG_CONFIG_HOME/p10k/.p10krc"
+[[ -f "$XDG_CONFIG_HOME/fzf/.fzfrc" ]] && source "$XDG_CONFIG_HOME/fzf/.fzfrc"
+[[ -f "$XDG_CONFIG_HOME/zsh/.zshdiff" ]] && source "$XDG_CONFIG_HOME/zsh/.zshdiff"

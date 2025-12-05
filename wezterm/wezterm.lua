@@ -41,6 +41,7 @@ if wezterm.target_triple:find("darwin") then
     { key = "=", mods = "CMD", action = wezterm.action.IncreaseFontSize },
     { key = "-", mods = "CMD", action = wezterm.action.DecreaseFontSize },
     { key = "0", mods = "CMD", action = wezterm.action.ResetFontSize },
+    { key = "v", mods = "CMD", action = wezterm.action.PasteFrom "Clipboard" },
   }
 else
   config.font_size = 10
@@ -50,6 +51,7 @@ else
     { key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
     { key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
     { key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
+    { key = "v", mods = "CTRL", action = wezterm.action.PasteFrom "Clipboard" },
   }
 end
 

@@ -1,0 +1,5 @@
+zinit load romkatv/powerlevel10k
+P10K_INSTANT_PROMPT="${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+[[ -r "$P10K_INSTANT_PROMPT" ]] && source "$P10K_INSTANT_PROMPT"
+P10K="$XDG_CONFIG_HOME/p10k/p10k.zsh"
+[[ ! -f "$P10K" ]] || source "$P10K"
