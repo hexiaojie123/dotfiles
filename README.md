@@ -33,6 +33,9 @@ Which can easily installed by brew.
 - btop
     - aarch64: btop-aarch64-linux-musl (v1.4.5) from github
     - x86_64: btop-x86_64-linux-musl (v1.4.5) from github
+- delta
+    - aarch64: delta 0.18.2 **compiled**
+    - x86_64: delta-0.18.2-x86_64-unknown-linux-musl from github
 - dust
     - aarch64: dust-v1.2.3-aarch64-unknown-linux-musl from github
     - x86_64: dust-v1.2.3-x86_64-unknown-linux-musl from github
@@ -51,6 +54,12 @@ Which can easily installed by brew.
 - gitstatus
     - aarch64: gitstatusd-linux-aarch64 from github
     - x86_64: gitstatusd-linux-x86_64 from github
+- ripgrep
+    - aarch64: ripgrep 15.1.0 (rev cd1f981bea) **compiled**
+    - x86_64: ripgrep-15.1.0-x86_64-unknown-linux-musl from github
+- tldr
+    - aarch64: tlrc v1.12.0 (implementing the tldr client specification v2.3) **compiled**
+    - x86_64: tlrc-v1.12.0-x86_64-unknown-linux-musl from github
 - zellij
     - aarch64: zellij-aarch64-unknown-linux-musl (v0.43.1) from github
     - x86_64: zellij-x86_64-unknown-linux-musl (v0.43.1) from github
@@ -62,18 +71,17 @@ Which can easily installed by brew.
     - x86_64: zsh-5.8-linux-x86_64 from github(zsh-bin)
 
 ### Compile
-#### eza
+#### eza (liked rust compile)
 **Based on alpine aarch64 & x86_64**
 Change target to specify version:
 - aarch64-unknown-linux-musl
-- x86_64-aarch64-unknown-linux-musl
+- x86_64-unknown-linux-musl
 ```shell
 git clone https://github.com/eza-community/eza.git
 cd eza
 TARGET=aarch64-unknown-linux-musl
 RUSTFLAGS="-C target-feature=+crt-static"
-cargo build --release \
-  --target $TARGET
+cargo build --release --target $TARGET
 ```
 
 #### fastfetch

@@ -33,6 +33,7 @@
     "$XDG_CONFIG_HOME/p10k/.p10krc": p10k/.p10krc # p10k
     "$XDG_CONFIG_HOME/p10k/p10k.zsh": p10k/p10k.zsh # p10k
     "$XDG_CONFIG_HOME/vim/.vimrc": vim/.vimrc # vim
+    "$XDG_CONFIG_HOME/zellij/config.kdl": zellij/config.kdl # zellij
     "$XDG_DATA_HOME/zinit/": zinit # zinit
     "$HOME/.zshenv": zsh/.zshenv # zsh
     "$XDG_CONFIG_HOME/zsh/.zshrc": zsh/.zshrc # zsh

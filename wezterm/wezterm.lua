@@ -24,10 +24,11 @@ config.window_padding = {
 
 config.disable_default_key_bindings = true
 
+config.bypass_mouse_reporting_modifiers = 'SHIFT'
 config.mouse_bindings = {
   { event = { Drag = { streak = 1, button = 'Left' } }, mods = 'CTRL', action = wezterm.action.StartWindowDrag },
   { event = { Up = { streak = 1, button = 'Left' } }, mods = 'NONE', action = wezterm.action.CompleteSelection 'Clipboard' },
-  { event = { Down = { streak = 1, button = 'Right' } }, mods = 'NONE', action = wezterm.action.PasteFrom 'Clipboard' },
+  { event = { Down = { streak = 1, button = 'Right' } }, mods = 'CTRL', action = wezterm.action.PasteFrom 'Clipboard' },
 }
 
 if wezterm.target_triple:find("darwin") then

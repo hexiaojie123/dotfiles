@@ -3,11 +3,14 @@
 - brew:
   - bat
   - btop
+  - git-delta
   - dust
   - eza
   - fastfetch
   - fd
   - fzf
+  - ripgrep
+  - tldr
   - zellij
   - zoxide
   - zsh

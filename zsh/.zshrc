@@ -8,7 +8,7 @@ fi
 # zinit >>>>>>>>>>>>>>>>>>>>>>>>>>
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
-fpath+=($XDG_DATA_HOME/zsh/site-functions/) # completion
+fpath+=($XDG_DATA_HOME/zsh/site-functions /opt/homebrew/share/zsh/site-functions) # completion
 zinit load zsh-users/zsh-completions # completion
 autoload -Uz compinit && compinit # completion
 zinit load Aloxaf/fzf-tab # fzf
@@ -46,6 +46,7 @@ bindkey '^[[1;5D' backward-word
 
 # into shell
 typeset -U PATH
+typeset -U fpath
 TMOUT=0
 fastfetch
 

@@ -1,4 +1,4 @@
-# fzf; ctrl f; ctrl r; alt t; vim **; cd **; kill **
+# fzf; ctrl f; ctrl r; alt t; vim ,; cd ,; kill ,; cdi; fzf-tab
 source <(fzf --zsh)
 
 bindkey -r '^T'
@@ -8,6 +8,8 @@ export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix $_FD_FLAGS"
 export FZF_ALT_C_COMMAND="fd --type d --strip-cwd-prefix $_FD_FLAGS"
 _fzf_compgen_path() { fd --type f ${=_FD_FLAGS} . "$1" }
 _fzf_compgen_dir() { fd --type d ${=_FD_FLAGS} . "$1" }
+
+export FZF_COMPLETION_TRIGGER=','
 
 export FZF_DEFAULT_OPTS="
   --style full
@@ -33,10 +35,9 @@ export FZF_DEFAULT_OPTS="
 "
 
 export FZF_ALT_C_OPTS="
-  --preview 'eza --tree --level=2 --icons --color=always {} | head -200' 
+  --preview 'eza --tree --level=2 --icons --color=always {} | head -200 
   --border-label ' Directory Search '
 "
-  # --preview-window 'right:50%'
 
 export _FZF_SIMPLE_VIEW="
   --preview 'echo {}' 
