@@ -1,0 +1,38 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+  tab name="dev" {
+    pane {
+      name "main"
+      focus true // not work
+    }
+    floating_panes {
+      pane {
+        focus true // work
+        x "5%"
+        y "10%"
+        width "40%"
+        height "40%"
+      }
+      pane command="btop" {
+        x "55%"
+        y "10%"
+        width "50%"
+        height "50%"
+      }
+      pane {
+        x "15%"
+        y "55%"
+        width "70%"
+        height "35%"
+      }
+    }
+  }
+}

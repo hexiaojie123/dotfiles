@@ -1,6 +1,12 @@
-# fzf; ctrl f; ctrl r; alt c; vim ,; cd ,; kill ,;
-# cdi;
-# git tab; cd tab; vim tab;
+# Test Case:
+#   fzf; ctrl f; ctrl r; alt c;  -- File Search; Directory Search; History Search
+#   vim ,; cd ,; kill ,;  -- command-line fuzzy finder
+#   cdi;
+#   git tab; cd tab; vim tab;
+# Legacy Issue
+#   fzf tab do not display header
+#   fzf tab command like git wiil always disapley preview whether option or file
+
 source <(fzf --zsh)
 
 bindkey -r '^T'
@@ -14,9 +20,7 @@ export FZF_ALT_C_COMMAND="fd --type d --strip-cwd-prefix $_FD_FLAGS"
 _fzf_compgen_path() { fd --type f ${=_FD_FLAGS} . "$1" }
 _fzf_compgen_dir() { fd --type d ${=_FD_FLAGS} . "$1" }
 
-export FZF_COMPLETION_TRIGGER=','
-
-export HEIGHT="32"
+export _FZF_HEIGHT="32"
 
 export _FZF_PREVIEW_CMD="
   if [ -d {} ]; then 
@@ -41,7 +45,13 @@ export _FZF_LIST_LABEL="
     echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"
   fi"
 export _FZF_PREVIEW_LABEL="[[ -n {} ]] && printf \" Previewing [%s] \" {}"
-export _FZF_HEADER="file --brief {} || echo \"No file selected\""
+export _FZF_HEADER_CMD="[[ -e {} ]] && file --brief {}"
+export _FZF_TRANSFORM_CMD="
+  if [[ -e {} ]]; then
+    echo \"change-preview-window(right)\"
+  else
+    echo \"change-preview-window(hidden)\"
+  fi"
 
 export FZF_DEFAULT_OPTS="
   --wrap
@@ -49,7 +59,8 @@ export FZF_DEFAULT_OPTS="
   --border
   --style full
   --padding 1,2
-  --height $HEIGHT
+  --height $_FZF_HEIGHT
+  --layout=reverse
   --border-label ' command-line fuzzy finder '
   --input-label ' Input (CTRL+: <r> git, <u> full, </> preview ) '
   --header-label ' File Type  '
@@ -60,28 +71,21 @@ export FZF_DEFAULT_OPTS="
   --bind 'ctrl-r:change-list-label( Reloading the list )+reload(git ls-files || fd --type f --hidden --follow --exclude .git)'
   --bind 'ctrl-u:change-list-label( Reloading the list )+reload(fd --hidden --follow)'
   --bind 'result:transform-list-label:$_FZF_LIST_LABEL'
+  --bind 'focus:transform:$_FZF_TRANSFORM_CMD'
   --bind 'focus:transform-preview-label:$_FZF_PREVIEW_LABEL'
   --bind 'focus:+transform-border-label:$_FZF_BORDER_LABEL'
-  --bind 'focus:+transform-header:$_FZF_HEADER'
+  --bind 'focus:+transform-header:$_FZF_HEADER_CMD'
   --color 'border:#aaaaaa,label:#cccccc'
   --color 'preview-border:#9999cc,preview-label:#ccccff'
   --color 'list-border:#669966,list-label:#99cc99'
   --color 'input-border:#996666,input-label:#ffcccc'
   --color 'header-border:#6699cc,header-label:#99ccff'"
 
+export FZF_COMPLETION_TRIGGER=','
 export _FZF_SIMPLE_VIEW="
   --preview-window hidden
   --bind 'focus:transform-header:true'"
-export FZF_CTRL_R_OPTS="$_FZF_SIMPLE_VIEW --border-label ' Command History '"
-_fzf_comprun() {
-  local command=$1
-  shift
-  case "$command" in
-    *)
-      fzf --bind 'focus:transform:[[ -e {} ]] && echo "change-preview-window(right)" || echo "change-preview-window(hidden)"' "$@"
-      ;;
-  esac
-}
+export FZF_CTRL_R_OPTS="$_FZF_SIMPLE_VIEW --border-label ' History Search '"
 
 export _ZO_ECHO=1
 export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
@@ -98,12 +102,12 @@ eval "$(zoxide init zsh --cmd cd)"
 zinit load Aloxaf/fzf-tab # fzf
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' fzf-flags \
-  "--height=$HEIGHT" \
+  "--height=$_FZF_HEIGHT" \
   '--border-label= fzf-tab ' \
   '--bind=focus:transform-preview-label:echo " Previewing "' \
   '--preview-window=hidden'
 zstyle ':fzf-tab:complete:(bat|cat|cd|cp|eza|fd|find|git|grep|head|ln|ls|mv|rg|rm|tail|vim):*' fzf-flags \
-  "--height=$HEIGHT" \
+  "--height=$_FZF_HEIGHT" \
   '--border-label= fzf-tab ' \
   '--bind=focus:transform-preview-label:echo " Previewing "' \
   '--preview-window=right:wrap'
