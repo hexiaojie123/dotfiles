@@ -1,9 +1,14 @@
-# fzf; ctrl f; ctrl r; alt t; vim ,; cd ,; kill ,; cdi; fzf-tab
+# fzf; ctrl f; ctrl r; alt c; vim ,; cd ,; kill ,;
+# cdi;
+# git tab; cd tab; vim tab;
 source <(fzf --zsh)
 
 bindkey -r '^T'
 bindkey '^F' fzf-file-widget
-export _FD_FLAGS="--hidden --follow --exclude .git"
+export _FD_FLAGS="--hidden --follow --exclude .git" 
+if [[ "$(uname)" == "Darwin" ]]; then
+  export _FD_FLAGS="--hidden --follow --exclude .git --exclude Library" 
+fi
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix $_FD_FLAGS"
 export FZF_ALT_C_COMMAND="fd --type d --strip-cwd-prefix $_FD_FLAGS"
 _fzf_compgen_path() { fd --type f ${=_FD_FLAGS} . "$1" }
@@ -11,53 +16,100 @@ _fzf_compgen_dir() { fd --type d ${=_FD_FLAGS} . "$1" }
 
 export FZF_COMPLETION_TRIGGER=','
 
+export HEIGHT="32"
+
+export _FZF_PREVIEW_CMD="
+  if [ -d {} ]; then 
+    eza --tree --level=2 --icons --color=always {} | head -200
+  elif [ -f {} ]; then 
+    fzf-preview.sh {}
+  else
+    echo {}
+  fi"
+export _FZF_BORDER_LABEL="
+  if [ -d {} ]; then 
+    echo \" Directory Search \"
+  elif [ -f {} ]; then 
+    echo \" File Search \"
+  else
+    echo \" command-line fuzzy finder \"
+  fi"
+export _FZF_LIST_LABEL="
+  if [[ -z \$FZF_QUERY ]]; then
+    echo \" \$FZF_MATCH_COUNT items \"
+  else
+    echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"
+  fi"
+export _FZF_PREVIEW_LABEL="[[ -n {} ]] && printf \" Previewing [%s] \" {}"
+export _FZF_HEADER="file --brief {} || echo \"No file selected\""
+
 export FZF_DEFAULT_OPTS="
+  --wrap
+  --cycle
+  --border
   --style full
-  --border --padding 1,2
-  --border-label ' command-line fuzzy finder ' --input-label ' Input ' --header-label ' File Type (Press CTRL+/ to toggle preview) '
-  --preview 'fzf-preview.sh {}'
-  --bind 'result:transform-list-label:
-    if [[ -z \$FZF_QUERY ]]; then
-      echo \" \$FZF_MATCH_COUNT items \"
-    else
-      echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"
-    fi
-    '
+  --padding 1,2
+  --height $HEIGHT
+  --border-label ' command-line fuzzy finder '
+  --input-label ' Input (CTRL+: <r> git, <u> full, </> preview ) '
+  --header-label ' File Type  '
+  --preview-window right:wrap
+  --preview '$_FZF_PREVIEW_CMD'
+  --bind 'tab:down,btab:up'
   --bind 'ctrl-/:toggle-preview'
-  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
-  --bind 'focus:+transform-header:file --brief {} || echo \"No file selected\"'
   --bind 'ctrl-r:change-list-label( Reloading the list )+reload(git ls-files || fd --type f --hidden --follow --exclude .git)'
+  --bind 'ctrl-u:change-list-label( Reloading the list )+reload(fd --hidden --follow)'
+  --bind 'result:transform-list-label:$_FZF_LIST_LABEL'
+  --bind 'focus:transform-preview-label:$_FZF_PREVIEW_LABEL'
+  --bind 'focus:+transform-border-label:$_FZF_BORDER_LABEL'
+  --bind 'focus:+transform-header:$_FZF_HEADER'
   --color 'border:#aaaaaa,label:#cccccc'
   --color 'preview-border:#9999cc,preview-label:#ccccff'
   --color 'list-border:#669966,list-label:#99cc99'
   --color 'input-border:#996666,input-label:#ffcccc'
-  --color 'header-border:#6699cc,header-label:#99ccff'
-"
-
-export FZF_ALT_C_OPTS="
-  --preview 'eza --tree --level=2 --icons --color=always {} | head -200 
-  --border-label ' Directory Search '
-"
+  --color 'header-border:#6699cc,header-label:#99ccff'"
 
 export _FZF_SIMPLE_VIEW="
-  --preview 'echo {}' 
-  --preview-window down:3:hidden:wrap
-  --header-label ''
-  --bind 'focus:transform-header:true'
-"
-
+  --preview-window hidden
+  --bind 'focus:transform-header:true'"
 export FZF_CTRL_R_OPTS="$_FZF_SIMPLE_VIEW --border-label ' Command History '"
-
 _fzf_comprun() {
   local command=$1
   shift
-
   case "$command" in
-    kill)
-      FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $_FZF_SIMPLE_VIEW --border-label ' Kill Progress '" fzf "$@"
-      ;;
     *)
-      fzf "$@"
+      fzf --bind 'focus:transform:[[ -e {} ]] && echo "change-preview-window(right)" || echo "change-preview-window(hidden)"' "$@"
       ;;
   esac
 }
+
+export _ZO_ECHO=1
+export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
+export _ZO_FZF_OPTS="
+  $FZF_DEFAULT_OPTS
+  --preview-window right
+  --bind 'focus:transform-header:true'
+  --border-label ' Zoxide. A smarter cd command. '
+  --preview 'eza --tree --level=2 --icons --color=always {2} | head -200'
+  --bind 'focus:transform-preview-label:[[ -n {2} ]] && printf \" Previewing [%s] \" {2}'
+"
+eval "$(zoxide init zsh --cmd cd)"
+
+zinit load Aloxaf/fzf-tab # fzf
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:*' fzf-flags \
+  "--height=$HEIGHT" \
+  '--border-label= fzf-tab ' \
+  '--bind=focus:transform-preview-label:echo " Previewing "' \
+  '--preview-window=hidden'
+zstyle ':fzf-tab:complete:(bat|cat|cd|cp|eza|fd|find|git|grep|head|ln|ls|mv|rg|rm|tail|vim):*' fzf-flags \
+  "--height=$HEIGHT" \
+  '--border-label= fzf-tab ' \
+  '--bind=focus:transform-preview-label:echo " Previewing "' \
+  '--preview-window=right:wrap'
+zstyle ':fzf-tab:*:*' fzf-preview '
+  if [ -d $realpath ]; then 
+    eza --tree --level=2 --icons --color=always $realpath | head -200
+  elif [ -f $realpath ]; then 
+    fzf-preview.sh $realpath
+  fi'

@@ -11,7 +11,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 fpath+=($XDG_DATA_HOME/zsh/site-functions /opt/homebrew/share/zsh/site-functions) # completion
 zinit load zsh-users/zsh-completions # completion
 autoload -Uz compinit && compinit # completion
-zinit load Aloxaf/fzf-tab # fzf
 zinit load zsh-users/zsh-syntax-highlighting # highlight
 zinit load zsh-users/zsh-autosuggestions # suggestion
 zstyle ':completion:*' rehash true # completion
@@ -27,11 +26,7 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt SHARE_HISTORY
 
-# env >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export _ZO_ECHO=1
-
 # tool >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-eval "$(zoxide init zsh --cmd cd)"
 alias ls="eza --icons --group-directories-first"
 alias ll="eza -l -a --icons --group-directories-first --header --git --time-style=long-iso"
 alias lz="eza -l --icons --group-directories-first --total-size --header --git --time-style=long-iso"
@@ -52,5 +47,5 @@ fastfetch
 
 # source others
 [[ -f "$XDG_CONFIG_HOME/p10k/.p10krc" ]] && source "$XDG_CONFIG_HOME/p10k/.p10krc"
-[[ -f "$XDG_CONFIG_HOME/fzf/.fzfrc" ]] && source "$XDG_CONFIG_HOME/fzf/.fzfrc"
+[[ -f "$XDG_CONFIG_HOME/fzf/.fzfrc" ]] && source "$XDG_CONFIG_HOME/fzf/.fzfrc" # fzf & zoxide & fzf-tab
 [[ -f "$XDG_CONFIG_HOME/zsh/.zshdiff" ]] && source "$XDG_CONFIG_HOME/zsh/.zshdiff"
