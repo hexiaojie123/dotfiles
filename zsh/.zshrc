@@ -49,3 +49,4 @@ fastfetch
 [[ -f "$XDG_CONFIG_HOME/p10k/.p10krc" ]] && source "$XDG_CONFIG_HOME/p10k/.p10krc"
 [[ -f "$XDG_CONFIG_HOME/fzf/.fzfrc" ]] && source "$XDG_CONFIG_HOME/fzf/.fzfrc" # fzf & zoxide & fzf-tab
 [[ -f "$XDG_CONFIG_HOME/zsh/.zshdiff" ]] && source "$XDG_CONFIG_HOME/zsh/.zshdiff"
+[[ -f "$XDG_CONFIG_HOME/tldr/.tldrc" ]] && source "$XDG_CONFIG_HOME/tldr/.tldrc"

@@ -1,8 +1,17 @@
 [user]
     email = shangshanfei1@huawei.com
     name = shangshanfei
+[http]
+    sslVerify = false
 [core]
+    editor = vim
     pager = delta
+[pull]
+    rebase = true
+[credential]
+    helper = store
+[commit]
+    template = ~/.config/git/commit_template
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -10,7 +19,10 @@
     line-numbers = true
     navigate = true
     syntax-theme = Dracula
-[merge]
-    conflictStyle = zdiff3
 [init]
     defaultBranch = master
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true

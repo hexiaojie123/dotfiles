@@ -1,0 +1,22 @@
+export TLRC_CONFIG="$XDG_CONFIG_HOME/tldr/config.toml"
+
+tldr() {
+  local base="$XDG_DATA_HOME/ctldr"
+  local page=""
+  local arg
+
+  for arg in "$@"; do
+    if [[ -z "$page" && "$arg" != -* ]]; then
+      page="$arg"
+      break
+    fi
+  done
+
+  command tldr "$@"
+  if [[ -n "$page" && -f "$base/${page}.md" ]]; then
+    local sep_color=$(tput setaf 8)
+    local reset=$(tput sgr0)
+    printf '%s========  Offical tldr  Custom tldr ========%s\n' "$sep_color" "$reset"
+    command tldr --render "$base/${page}.md"
+  fi
+}

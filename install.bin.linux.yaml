@@ -56,6 +56,7 @@
     ~/.local/bin/tldr: binaries/${PLATFORM}/tldr/bin/tldr # tldr
     ~/.local/bin/zellij: binaries/${PLATFORM}/zellij/bin/zellij # zellij
     ~/.local/bin/zoxide: binaries/${PLATFORM}/zoxide/bin/zoxide # zoxide
+    ~/.cache/tlrc: binaries/common/tldr # tldr
     "$XDG_DATA_HOME/zsh/site-functions/_bat": binaries/${PLATFORM}/bat/share/autocomplete/bat.zsh # bat
     "$XDG_DATA_HOME/zsh/site-functions/_eza": binaries/${PLATFORM}/eza/share/_eza # eza
     "$XDG_DATA_HOME/zsh/site-functions/_delta": binaries/${PLATFORM}/delta/share/completion.zsh # delta

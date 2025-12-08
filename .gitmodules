@@ -30,3 +30,7 @@
     path = dotbot-brew
     url = https://github.com/d12frosted/dotbot-brew.git
     ignore = dirty
+[submodule "binaries/common/tldr"]
+    path = binaries/common/tldr
+    url = https://github.com/tldr-pages/tldr.git
+    ignore = dirty

@@ -15,23 +15,29 @@ layout {
     }
     floating_panes {
       pane {
+        name "gsql"
         focus true // work
-        x "5%"
-        y "10%"
-        width "40%"
-        height "40%"
-      }
-      pane command="btop" {
-        x "55%"
-        y "10%"
+        x "48%"
+        y "1%"
         width "50%"
-        height "50%"
+        height "25%"
       }
       pane {
-        x "15%"
-        y "55%"
-        width "70%"
-        height "35%"
+        name "watch"
+        command "watch"
+        args "-d" "ccache" "-sv"
+        x "5%"
+        y "66%"
+        width "55%"
+        height "30%"
+      }
+      pane {
+        name "btop"
+        command "btop"
+        x "10%"
+        y "25%"
+        width "85%"
+        height "50%"
       }
     }
   }
