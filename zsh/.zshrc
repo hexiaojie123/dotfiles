@@ -31,6 +31,7 @@ alias ls="eza --icons --group-directories-first"
 alias ll="eza -l -a --icons --group-directories-first --header --git --time-style=long-iso"
 alias lz="eza -l --icons --group-directories-first --total-size --header --git --time-style=long-iso"
 alias lt="eza --tree --level=2 --icons"
+alias fastfetch="fastfetch -c examples/25.jsonc"
 
 # bindkey >>>>>>>>>>>>>>>>>>>>>>>
 bindkey -v
