@@ -2,11 +2,14 @@
 
 > My gdb.
 
-- Debug an executable:
+- Remove the limit on array or string printing (show full content):
 
-`gdb {{path/to/executable}}`
+`set print elements 0`
 
-- Attach a process to `gdb`:
+- Control thread execution while stepping (on: lock others; off: run all; step: lock others only during step):
 
-`gdb {{[-p|--pid]}} {{procID}}`
+`set scheduler-locking {{on|off|step}}`
 
+- Do not stop or print when specific signals are received:
+
+`handle SIGUSR1 SIGUSR2 SIG36 SIGSTOP noprint nostop`
