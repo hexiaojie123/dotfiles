@@ -52,17 +52,20 @@
     ~/.local/bin/fzf: binaries/${PLATFORM}/fzf/bin/fzf # fzf
     ~/.local/bin/fzf-preview.sh: binaries/${PLATFORM}/fzf/bin/fzf-preview.sh # fzf
     "$XDG_STATE_HOME/bin/gitstatusd-linux-${PLATFORM}": binaries/${PLATFORM}/gitstatus/bin/gitstatusd-linux-${PLATFORM} # gitstatus
+    ~/.local/bin/pueue: binaries/${PLATFORM}/pueue/bin/pueue # pueue
+    ~/.local/bin/pueued: binaries/${PLATFORM}/pueue/bin/pueued # pueue
     ~/.local/bin/rg: binaries/${PLATFORM}/ripgrep/bin/rg # ripgrep
     ~/.local/bin/tldr: binaries/${PLATFORM}/tldr/bin/tldr # tldr
     ~/.local/bin/zellij: binaries/${PLATFORM}/zellij/bin/zellij # zellij
     ~/.local/bin/zoxide: binaries/${PLATFORM}/zoxide/bin/zoxide # zoxide
-    ~/.cache/tlrc: binaries/common/tldr # tldr
+    "$XDG_CACHE_HOME/tlrc": binaries/common/tldr # tldr
     "$XDG_DATA_HOME/zsh/site-functions/_bat": binaries/${PLATFORM}/bat/share/autocomplete/bat.zsh # bat
     "$XDG_DATA_HOME/zsh/site-functions/_eza": binaries/${PLATFORM}/eza/share/_eza # eza
     "$XDG_DATA_HOME/zsh/site-functions/_delta": binaries/${PLATFORM}/delta/share/completion.zsh # delta
     "$XDG_DATA_HOME/zsh/site-functions/_dust": binaries/${PLATFORM}/dust/share/_dust # dust
     "$XDG_DATA_HOME/zsh/site-functions/_fastfetch": binaries/${PLATFORM}/fastfetch/share/zsh/site-functions/_fastfetch # fastfetch
     "$XDG_DATA_HOME/zsh/site-functions/_fd": binaries/${PLATFORM}/fd/share/autocomplete/_fd # fd
+    "$XDG_DATA_HOME/zsh/site-functions/_pueue": binaries/${PLATFORM}/pueue/share/_pueue # pueue
     "$XDG_DATA_HOME/zsh/site-functions/_rg": binaries/${PLATFORM}/ripgrep/share/complete/_rg # ripgrep
     "$XDG_DATA_HOME/zsh/site-functions/_tldr": binaries/${PLATFORM}/tldr/share/completions/_tldr # ripgrep
     "$XDG_DATA_HOME/zsh/site-functions/_zellij": binaries/${PLATFORM}/zellij/share/_zellij # zellij

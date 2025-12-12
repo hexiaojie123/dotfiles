@@ -54,6 +54,9 @@ Which can easily installed by brew.
 - gitstatus
     - aarch64: gitstatusd-linux-aarch64 from github
     - x86_64: gitstatusd-linux-x86_64 from github
+- pueue:
+    - aarch64: pueue-aarch64-unknown-linux-musl (v4.0.1) from github
+    - x86_64: pueue-x86_64-unknown-linux-musl (v4.0.1) from github
 - ripgrep
     - aarch64: ripgrep 15.1.0 (rev cd1f981bea) **compiled**
     - x86_64: ripgrep-15.1.0-x86_64-unknown-linux-musl from github

@@ -26,6 +26,9 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt SHARE_HISTORY
 
+# env >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+export PUEUE_CONFIG_PATH="$XDG_CONFIG_HOME/pueue/pueue.yml"
+
 # tool >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 alias ls="eza --icons --group-directories-first"
 alias ll="eza -l -a --icons --group-directories-first --header --git --time-style=long-iso"

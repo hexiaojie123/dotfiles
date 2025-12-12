@@ -33,6 +33,8 @@
     "$XDG_CONFIG_HOME/git/config": git/config # git
     "$XDG_CONFIG_HOME/p10k/.p10krc": p10k/.p10krc # p10k
     "$XDG_CONFIG_HOME/p10k/p10k.zsh": p10k/p10k.zsh # p10k
+    "$XDG_CONFIG_HOME/pueue/pueue.yml": pueue/pueue.yml # pueue
+    "$XDG_CONFIG_HOME/pueue/notify.sh": pueue/notify.sh # pueue
     "$XDG_CONFIG_HOME/tldr/config.toml": tldr/config.toml # tldr
     "$XDG_CONFIG_HOME/tldr/.tldrc": tldr/.tldrc # tldr
     "$XDG_CONFIG_HOME/vim/vimrc": vim/vimrc # vim

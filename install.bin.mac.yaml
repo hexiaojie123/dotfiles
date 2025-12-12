@@ -1,3 +1,13 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+
+- link:
+    "$XDG_DATA_HOME/zsh/site-functions/_pueue": binaries/${PLATFORM}/pueue/share/_pueue # pueue
+    "$XDG_CACHE_HOME/tlrc": binaries/common/tldr # tldr
+
 # Assume that your system has Homebrew installed,
 # and that the network environment has no restrictions.
 - brew:
@@ -9,6 +19,7 @@
   - fastfetch
   - fd
   - fzf
+  - pueue
   - ripgrep
   - tlrc
   - zellij
