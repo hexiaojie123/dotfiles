@@ -30,7 +30,7 @@ Which can easily installed by brew.
 - bat
     - aarch64: bat-v0.26.0-x86_64-unknown-linux-musl from github
     - x86_64: bat-v0.26.0-aarch64-unknown-linux-musl from github
-- btop
+- btop (no _btop)
     - aarch64: btop-aarch64-linux-musl (v1.4.5) from github
     - x86_64: btop-x86_64-linux-musl (v1.4.5) from github
 - delta
@@ -48,10 +48,10 @@ Which can easily installed by brew.
 - fd
     - aarch64: fd-v10.3.0-aarch64-unknown-linux-musl from github
     - x86_64: fd-v10.3.0-x86_64-unknown-linux-musl from github
-- fzf
+- fzf (no _fzf instead of fzf --zsh)
     - aarch64: fzf-0.67.0-linux_arm64 from github
     - x86_64: fzf-0.67.0-linux_amd64 from github
-- gitstatus
+- gitstatus (no _gitstatus)
     - aarch64: gitstatusd-linux-aarch64 from github
     - x86_64: gitstatusd-linux-x86_64 from github
 - pueue:
@@ -69,7 +69,7 @@ Which can easily installed by brew.
 - zoxide
     - aarch64: zoxide-0.9.8-aarch64-unknown-linux-musl from github
     - x86_64: zoxide-0.9.8-x86_64-unknown-linux-musl from github
-- zsh
+- zsh (no _zsh)
     - aarch64: zsh-5.8-linux-aarch64 from github (zsh-bin)
     - x86_64: zsh-5.8-linux-x86_64 from github(zsh-bin)
 
