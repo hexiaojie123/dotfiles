@@ -9,14 +9,18 @@
 - brew:
   - bat
   - btop
+  - choose-rust
   - git-delta
   - dust
   - eza
   - fastfetch
   - fd
   - fzf
+  - hyperfine
+  - grex
   - pueue
   - ripgrep
+  - sd
   - tlrc
   - zellij
   - zoxide
