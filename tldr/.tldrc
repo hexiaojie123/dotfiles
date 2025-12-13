@@ -1,7 +1,5 @@
-export TLRC_CONFIG="$XDG_CONFIG_HOME/tldr/config.toml"
-
 tldr() {
-  local base="$XDG_DATA_HOME/ctldr"
+  local base="$XDG_DATA_HOME/tldr"
   local page=""
   local arg
 

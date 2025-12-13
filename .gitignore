@@ -1,5 +1,9 @@
 **/.DS_Store
 **/*.zwc
+
 zinit/polaris/
 zinit/services/
 zinit/snippets/
+
+toolbox/bin/*/fzf-preview.sh
+toolbox/bin/*/notify.sh

@@ -16,20 +16,18 @@
 
 - shell:
   - echo "Platform is ${PLATFORM}"
-
-- shell:
-  - #zsh
+  - #zsh (must be after than linking bin)
     command: >
-      toolbox/zsh/zsh-bin/install
-      -f toolbox/zsh/zsh-bin/zsh-5.8-linux-${PLATFORM}.tar.gz
-      -d $HOME/.local
+      toolbox/share/zsh/zsh-bin/install
+      -f toolbox/share/zsh/zsh-bin/zsh-5.8-linux-${PLATFORM}.tar.gz
+      -d $HOME/.local/zsh-install
       -e no &&
-      ALT_ZSH="$HOME/.local/bin/zsh" &&
+      ALT_ZSH="$HOME/.local/zsh-install/bin/zsh" &&
       echo "If your default is bash, please add the below at the end of your .bashrc:
 
       cat << 'EOF' >> \$HOME/.bashrc
 
-      ALT_ZSH="\$HOME/.local/bin/zsh"
+      ALT_ZSH="\$HOME/.local/zsh-install/bin/zsh"
 
       if [[ -x "\$ALT_ZSH" && \$- == *i* && -z "\$NO_ZSH" ]]; then
           export SHELL="\$ALT_ZSH"
@@ -42,5 +40,5 @@
     stdout: true
 
 - link:
-    ~/.local/bin: toolbox/bin/${PLATFORM} # bin
+    ~/.local/bin: toolbox/bin/${PLATFORM} # bin (dir)
     "$XDG_STATE_HOME/bin/gitstatusd-linux-${PLATFORM}": toolbox/bin/${PLATFORM}/gitstatusd-linux-${PLATFORM} # gitstatus

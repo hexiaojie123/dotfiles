@@ -19,7 +19,7 @@
   - "$XDG_CACHE_HOME"
   - "$XDG_DATA_HOME"
   - "$XDG_STATE_HOME"
-  - "$XDG_STATE_HOME/zsh"
+  - "$XDG_STATE_HOME/zsh" # zsh-history
 
 - shell:
   - chmod 700 $XDG_CONFIG_HOME
@@ -30,25 +30,27 @@
 
 - link:
     # config
+    "$HOME/.zshenv": zsh/.zshenv # zsh
+    "$XDG_CONFIG_HOME/btop": btop # btop (dir)
     "$XDG_CONFIG_HOME/fzf/.fzfrc": fzf/.fzfrc # fzf
     "$XDG_CONFIG_HOME/git/config": git/config # git
     "$XDG_CONFIG_HOME/p10k/.p10krc": p10k/.p10krc # p10k
     "$XDG_CONFIG_HOME/p10k/p10k.zsh": p10k/p10k.zsh # p10k
     "$XDG_CONFIG_HOME/pueue/pueue.yml": pueue/pueue.yml # pueue
-    "$XDG_CONFIG_HOME/pueue/notify.sh": pueue/notify.sh # pueue
-    "$XDG_CONFIG_HOME/tldr/config.toml": tldr/config.toml # tldr
-    "$XDG_CONFIG_HOME/tldr/.tldrc": tldr/.tldrc # tldr
+    "$XDG_CONFIG_HOME/tldr": tldr # tldr (dir)
     "$XDG_CONFIG_HOME/vim/vimrc": vim/vimrc # vim
-    "$XDG_CONFIG_HOME/zellij": zellij # zellij
-    "$XDG_DATA_HOME/ctldr": tldr/ctldr # tldr
-    "$XDG_DATA_HOME/zinit": zinit # zinit
-    "$HOME/.zshenv": zsh/.zshenv # zsh
+    "$XDG_CONFIG_HOME/zellij": zellij # zellij (dir)
     "$XDG_CONFIG_HOME/zsh/.zshrc": zsh/.zshrc # zsh
     # share
-    "$XDG_DATA_HOME/zsh/site-functions": toolbox/share/zsh/site-functions # site-functions
-    ~/.local/bin/fzf-preview.sh: binaries/${PLATFORM}/fzf/bin/fzf-preview.sh
+    "$XDG_DATA_HOME/fastfetch": toolbox/share/fastfetch # fastfetch (dir)
+    "$XDG_DATA_HOME/zsh/site-functions": toolbox/share/zsh/site-functions # zsh site-functions (dir)
+    "$XDG_DATA_HOME/tldr": toolbox/share/tldr # tldr (dir)
+    "$XDG_DATA_HOME/zinit": zinit # zinit (dir)
     # cache
-    "$XDG_CACHE_HOME/tlrc": toolbox/cache/tldr # tldr
+    "$XDG_CACHE_HOME/tlrc": toolbox/cache/tldr # tldr (dir)
+    # bin
+    "~/.local/bin/fzf-preview.sh": toolbox/share/fzf/fzf-preview.sh # fzf
+    "~/.local/bin/notify.sh": toolbox/share/pueue/notify.sh # pueue
 
 - shell:
   - test -f "$XDG_CONFIG_HOME/zsh/.zshdiff" || touch "$XDG_CONFIG_HOME/zsh/.zshdiff"

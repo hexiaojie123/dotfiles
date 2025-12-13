@@ -5,7 +5,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 export ZDOTDIR="$HOME/.config/zsh"
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/zsh-install/bin:$PATH"
 if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/binutils/bin:$PATH"
 fi

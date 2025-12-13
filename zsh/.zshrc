@@ -1,5 +1,5 @@
 # alt zsh >>>>>>>>>>>>>>>>>>>>>>>>>
-ALT_ZSH="$HOME/.local/bin/zsh"
+ALT_ZSH="$HOME/.local/zsh-install/bin/zsh"
 if [[ "$ZSH_VERSION" < "5.8" && -x "$ALT_ZSH" ]]; then # string comparision mistake ignored currently
     export SHELL="$ALT_ZSH"
     exec "$ALT_ZSH" -l
@@ -27,7 +27,8 @@ setopt HIST_REDUCE_BLANKS
 setopt SHARE_HISTORY
 
 # env >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-export PUEUE_CONFIG_PATH="$XDG_CONFIG_HOME/pueue/pueue.yml"
+export PUEUE_CONFIG_PATH="$XDG_CONFIG_HOME/pueue/pueue.yml" # if not defined, macos will find it in ~/Library
+export TLRC_CONFIG="$XDG_CONFIG_HOME/tldr/config.toml" # if not defined, macos will find it in ~/Library
 
 # tool >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 alias ls="eza --icons --group-directories-first"

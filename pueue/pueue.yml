@@ -17,7 +17,7 @@ daemon:
   callback: >-
     zellij run --floating --close-on-exit --name 'Task {{ id }}: {{ result }} [{{ group }}]'
     --width 50% --height 50%
-    -- ~/.config/pueue/notify.sh
+    -- notify.sh
     '{{ id }}' '{{ result }}' '{{ group }}' '{{ start }}'
     '{{ end }}' '{{ path }}' '{{ command }}' '{{ exit_code }}'
   env_vars: {}
