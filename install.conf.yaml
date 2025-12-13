@@ -29,6 +29,7 @@
   - chmod 700 $XDG_STATE_HOME/zsh
 
 - link:
+    # config
     "$XDG_CONFIG_HOME/fzf/.fzfrc": fzf/.fzfrc # fzf
     "$XDG_CONFIG_HOME/git/config": git/config # git
     "$XDG_CONFIG_HOME/p10k/.p10krc": p10k/.p10krc # p10k
@@ -43,6 +44,11 @@
     "$XDG_DATA_HOME/zinit": zinit # zinit
     "$HOME/.zshenv": zsh/.zshenv # zsh
     "$XDG_CONFIG_HOME/zsh/.zshrc": zsh/.zshrc # zsh
+    # share
+    "$XDG_DATA_HOME/zsh/site-functions": toolbox/share/zsh/site-functions # site-functions
+    ~/.local/bin/fzf-preview.sh: binaries/${PLATFORM}/fzf/bin/fzf-preview.sh
+    # cache
+    "$XDG_CACHE_HOME/tlrc": toolbox/cache/tldr # tldr
 
 - shell:
   - test -f "$XDG_CONFIG_HOME/zsh/.zshdiff" || touch "$XDG_CONFIG_HOME/zsh/.zshdiff"

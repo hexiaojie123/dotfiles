@@ -1,3 +1,0 @@
-source <(fzf --zsh)
-
-The above command in zshrc will load fzf completions and keybindings.
