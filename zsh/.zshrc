@@ -27,6 +27,7 @@ setopt HIST_REDUCE_BLANKS
 setopt SHARE_HISTORY
 
 # env >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+if command -v manpath >/dev/null 2>&1; then export MANPATH="$(manpath):$HOME/.local/man"; fi
 export PUEUE_CONFIG_PATH="$XDG_CONFIG_HOME/pueue/pueue.yml" # if not defined, macos will find it in ~/Library
 export TLRC_CONFIG="$XDG_CONFIG_HOME/tldr/config.toml" # if not defined, macos will find it in ~/Library
 

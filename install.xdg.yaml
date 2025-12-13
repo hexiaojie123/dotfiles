@@ -44,6 +44,7 @@
     # share
     "$XDG_DATA_HOME/fastfetch": toolbox/share/fastfetch # fastfetch (dir)
     "$XDG_DATA_HOME/zsh/site-functions": toolbox/share/zsh/site-functions # zsh site-functions (dir)
+    "$XDG_DATA_HOME/man": toolbox/share/man # man (dir)
     "$XDG_DATA_HOME/tldr": toolbox/share/tldr # tldr (dir)
     "$XDG_DATA_HOME/zinit": zinit # zinit (dir)
     # cache
